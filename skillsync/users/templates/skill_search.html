@@ -1,0 +1,14 @@
+<h2>Search Skills</h2>
+
+<form method="GET" action="{% url 'search_skills' %}">
+    <input type="text" name="q" placeholder="Search Skills" value="{{ query }}">
+    <button type="submit">Search</button>
+</form>
+
+<ul>
+    {% for skill in skills %}
+        <li>{{ skill.name }}</li>
+    {% empty %}
+        <li>No skills found</li>
+    {% endfor %}
+</ul>

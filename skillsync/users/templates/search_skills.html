@@ -1,0 +1,25 @@
+<!-- search_skills.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Skills</title>
+</head>
+<body>
+    <h1>Search Skills</h1>
+    <form method="GET" action="{% url 'search_skills' %}">
+        <input type="text" name="q" placeholder="Search for a skill..." value="{{ query }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <h2>Results:</h2>
+    <ul>
+        {% for skill in skills %}
+            <li>{{ skill.name }}</li>
+        {% empty %}
+            <li>No skills found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
