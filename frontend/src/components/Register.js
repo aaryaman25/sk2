@@ -1,4 +1,3 @@
-// src/components/Register.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import apiService from '../apiService'; // Adjust the import path if necessary
@@ -23,16 +22,17 @@ const Register = () => {
     };
 
     return (
-        <div>
-            <h2>Register</h2>
-            {error && <p style={{ color: 'red' }}>{error}</p>} {/* Display error message if exists */}
-            <form onSubmit={handleRegister}>
+        <div style={styles.container}>
+            <h2 style={styles.title}>Register</h2>
+            {error && <p style={styles.error}>{error}</p>} {/* Display error message if exists */}
+            <form onSubmit={handleRegister} style={styles.form}>
                 <input
                     type="text"
                     placeholder="Username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
+                    style={styles.input} // Apply styles to input
                 />
                 <input
                     type="email"
@@ -40,6 +40,7 @@ const Register = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
+                    style={styles.input} // Apply styles to input
                 />
                 <input
                     type="password"
@@ -47,11 +48,57 @@ const Register = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
+                    style={styles.input} // Apply styles to input
                 />
-                <button type="submit">Register</button>
+                <button type="submit" style={styles.button}>Register</button>
             </form>
         </div>
     );
+};
+
+const styles = {
+    container: {
+        backgroundColor: '#000000', // Black background
+        minHeight: '100vh', // Full viewport height
+        color: 'white', // Text color for contrast
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '20px',
+    },
+    title: {
+        fontSize: '2rem',
+        marginBottom: '20px',
+    },
+    form: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    input: {
+        padding: '10px',
+        marginBottom: '10px',
+        width: '300px',
+        border: 'none',
+        borderRadius: '4px',
+        outline: 'none',
+        backgroundColor: '#333', // Darker input background
+        color: 'white',
+    },
+    button: {
+        padding: '10px 20px',
+        backgroundColor: '#ccc', // Softer grey color for the button
+        color: 'black', // Change text color to black for contrast
+        border: 'none',
+        borderRadius: '4px',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s', // Smooth transition for hover effect
+    },
+    error: {
+        color: 'red',
+        marginTop: '10px',
+    },
 };
 
 export default Register;
